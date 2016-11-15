@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="sort," />
 
 
 
@@ -84,12 +84,25 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="应许之地">
-<meta property="og:url" content="http://huac0921.github.io/index.html">
+<meta name="description" content="四种基本排序：冒泡排序，快速排序，选择排序，插入排序
+
+冒泡排序  在要排序的一组数中，对当前还未排好序的范围内的全部数，自上而下对相邻的两个数依次进行比较和调整，让较大的数往下沉，较小的往上冒。即：每当两相邻的数比较后发现它们的排序与排序要求相反时，就将它们互换。  相邻的两个数字进行比较 找出最小的放在前面 大数放后面 依次比较。冒泡算法是稳定算法。
+12345678910111213$ a">
+<meta property="og:type" content="article">
+<meta property="og:title" content="排序">
+<meta property="og:url" content="http://huac0921.github.io/2016/11/15/sort/index.html">
 <meta property="og:site_name" content="应许之地">
+<meta property="og:description" content="四种基本排序：冒泡排序，快速排序，选择排序，插入排序
+
+冒泡排序  在要排序的一组数中，对当前还未排好序的范围内的全部数，自上而下对相邻的两个数依次进行比较和调整，让较大的数往下沉，较小的往上冒。即：每当两相邻的数比较后发现它们的排序与排序要求相反时，就将它们互换。  相邻的两个数字进行比较 找出最小的放在前面 大数放后面 依次比较。冒泡算法是稳定算法。
+12345678910111213$ a">
+<meta property="og:updated_time" content="2016-11-15T04:03:29.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="应许之地">
+<meta name="twitter:title" content="排序">
+<meta name="twitter:description" content="四种基本排序：冒泡排序，快速排序，选择排序，插入排序
+
+冒泡排序  在要排序的一组数中，对当前还未排好序的范围内的全部数，自上而下对相邻的两个数依次进行比较和调整，让较大的数往下沉，较小的往上冒。即：每当两相邻的数比较后发现它们的排序与排序要求相反时，就将它们互换。  相邻的两个数字进行比较 找出最小的放在前面 大数放后面 依次比较。冒泡算法是稳定算法。
+12345678910111213$ a">
 
 
 
@@ -107,7 +120,7 @@
   };
 </script>
 
-  <title> 应许之地 </title>
+  <title> 排序 | 应许之地 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -138,9 +151,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -217,9 +228,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
   
@@ -239,10 +250,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2016/11/15/sort/" itemprop="url">
-                  排序
-                </a>
+                排序
               
             
           </h1>
@@ -289,9 +297,7 @@
       
 
       
-        
-          
-            <blockquote>
+        <blockquote>
 <p>四种基本排序：冒泡排序，快速排序，选择排序，插入排序</p>
 </blockquote>
 <h1 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h1><p>  在要排序的一组数中，对当前还未排好序的范围内的全部数，自上而下对相邻的两个数依次进行比较和调整，让较大的数往下沉，较小的往上冒。即：每当两相邻的数比较后发现它们的排序与排序要求相反时，就将它们互换。<br>  相邻的两个数字进行比较 找出最小的放在前面 大数放后面 依次比较。冒泡算法是稳定算法。</p>
@@ -312,468 +318,81 @@
 <p>以数组第二个数字为基准 假定该数组之前的数字都是排好序的，相互比较大小，比该数字小的放该基准数字的前面，依次往后移动,直到数组尾部，整个数组排序完毕.插入排序是稳定算法。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">    <span class="variable">$len</span>=count(<span class="variable">$arr</span>);</div><div class="line">    <span class="keyword">for</span>(<span class="variable">$i</span>=1; <span class="variable">$i</span>&lt;<span class="variable">$len</span>; <span class="variable">$i</span>++) &#123;</div><div class="line">        <span class="variable">$tmp</span> = <span class="variable">$arr</span>[<span class="variable">$i</span>];</div><div class="line">        <span class="keyword">for</span>(<span class="variable">$j</span>=<span class="variable">$i</span>-1;<span class="variable">$j</span>&gt;=0;<span class="variable">$j</span>--) &#123;</div><div class="line"><span class="comment">#            if($tmp &lt; $arr[$j]) &#123;</span></div><div class="line">                //发现插入的元素要小，交换位置，将后边的元素与前面的元素互换</div><div class="line">                <span class="variable">$arr</span>[<span class="variable">$j</span>+1] = <span class="variable">$arr</span>[<span class="variable">$j</span>];</div><div class="line">                <span class="variable">$arr</span>[<span class="variable">$j</span>] = <span class="variable">$tmp</span>;</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                //如果碰到不需要移动的元素，由于是已经排序好是数组，则前面的就不需要再次比较了。</div><div class="line">                <span class="built_in">break</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">return</span> <span class="variable">$arr</span>;</div></pre></td></tr></table></figure>
 
-          
+      
+    </div>
+
+    <div>
+      
         
       
     </div>
 
     <div>
       
-    </div>
+        
 
-    <div>
       
     </div>
 
     <footer class="post-footer">
       
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/11/15/redis-with-cache/" itemprop="url">
-                  redis_with_cache
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-15T09:58:06+08:00" content="2016-11-15">
-              2016-11-15
-            </time>
-          </span>
-
+        <div class="post-tags">
           
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/11/15/redis-with-cache/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/15/redis-with-cache/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
+            <a href="/tags/sort/" rel="tag">#sort</a>
           
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
+              <a href="/2016/11/15/redis-with-cache/" rel="next" title="redis_with_cache">
+                <i class="fa fa-chevron-left"></i> redis_with_cache
+              </a>
             
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
             
-              
-                
-                <a class="post-title-link" href="/2016/11/14/aboutNext/" itemprop="url">
-                  GitHub升级后next主题不能正常显示的坑
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-14T18:39:37+08:00" content="2016-11-14">
-              2016-11-14
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/11/14/aboutNext/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/14/aboutNext/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
+          </div>
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <blockquote>
-<p>关键词：next,GitHub</p>
-<h1 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h1><p>  美国大选结束,随着DT in the house,心血来潮想写些东西，结果发现博客挂了。。。。。挂了。。。只打开了页面没了内容。。。一定是公司的网不好！<br>  回去独享50M带宽，发现也打不开了。。。。这。。。默默点开f12,发现一大堆js，css丢失，打开git，发现东西在啊，好不容易写了一篇bolg就这么只能在本地看，放不上去了，真是日了🐶。。。</p>
-<h1 id="报错图"><a href="#报错图" class="headerlink" title="报错图"></a>报错图</h1></blockquote>
-<p> <img src="http://p1.bpimg.com/1949/061afe2e6f390899.jpg" alt="error"><br> 一大堆丢失。。。我反反复复,hexo clean ,hexo g;and hexo d,打开还是空白。。。<br> 在我乐此不疲的试验各种hexo命令时候，发现qq邮箱垃圾箱内多了一大批github的邮件。。。。<br> <img src="http://p1.bpimg.com/1949/97f7dba688e79479.jpg" alt="email"></p>
-<p> 原来是主题的问题。。。那换个主题吧，看来看去，真没有比next看着简洁美观的主题了，不想换啊。。。。<br> 后来看了github的<a href="https://github.com/blog/2277-what-s-new-in-github-pages-with-jekyll-3-3" target="_blank" rel="external">升级说明</a>,这个版本会忽略vendor文件夹.</p>
-<p> 既然忽略了那就改个名字吧。</p>
-<h1 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h1><p> 首先，找到public下的vendor文件夹，改个醒目点的名字，比如lib，core什么的等等。。。<br> 然后，分别找到themes\next  下的.bowerrc,bower.json,_config.yml 文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">_config.yml</div><div class="line">vendors:</div><div class="line">  _internal: lib</div><div class="line">.bowerrc</div><div class="line">  <span class="built_in">source</span>/lib</div><div class="line">bower.json</div><div class="line"> ignor下<span class="built_in">source</span>/lib</div></pre></td></tr></table></figure>
-<p> 重新部署发布。。。。</p>
-<h1 id="题外话"><a href="#题外话" class="headerlink" title="题外话"></a>题外话</h1><p> 更改完成后，hexo g;and hexo d 一直正在进行中，没有部署成功的话，建议重新按照文档安装一个新的hexo吧，我用git提交了pulic下的所有文件，可以显示出博客内容，但是你新建或者更新md文件时候，在本地hexo g，这个时候去提交更改后的md时候，一直说代码冲突，各种git pull，git push不成功，后来只能备份了下原来的内容，重新过了一遍hexo。终于，博客稳定了！😂</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
+
+    <div class="post-spread">
       
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
 
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/11/14/hello-world/" itemprop="url">
-                  Hello World
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-14T18:11:28+08:00" content="2016-11-14">
-              2016-11-14
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/11/14/hello-world/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/14/hello-world/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-          
-        
       
     </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/10/25/php——Recursion/" itemprop="url">
-                  PHP无限分类之评论功能
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-25T15:09:51+08:00" content="2016-10-25">
-              2016-10-25
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/10/25/php——Recursion/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/25/php——Recursion/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>关键词：递归、评论</p>
-</blockquote>
-<h1 id="递归的定义"><a href="#递归的定义" class="headerlink" title="递归的定义"></a>递归的定义</h1><pre><code>递归是一种函数调用自身的一种机制。
-</code></pre><h2 id="尾递归的定义"><a href="#尾递归的定义" class="headerlink" title="尾递归的定义"></a>尾递归的定义</h2><p>顾名思义，尾递归就是从最后开始计算,每递归一次就算出相应的结果, 也就是说, 函数调用出现在调用者函数的尾部, 因为是尾部,所以根本没有必要去保存任何局部变量.直接让被调用的函数返回时越过调用者, 返回到调用者的调用者去。尾递归就是把当前的运算结果（或路径）放在参数里传给下层函数，深层函数所面对的不是越来越简单的问题，而是越来越复杂的问题，因为参数里带有前面若干步的运算路径。</p>
-<h1 id="评论数据表设计"><a href="#评论数据表设计" class="headerlink" title="评论数据表设计"></a>评论数据表设计</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">CREATE TABLE `circle_follow` (</div><div class="line">`id` smallint(8) NOT NULL AUTO_INCREMENT,</div><div class="line">`topic_id` int(11) NOT NULL,</div><div class="line">`parent_id` int(11) DEFAULT &apos;0&apos; COMMENT &apos;评论的父ID&apos;,</div><div class="line">`parent_user_id` int(11) DEFAULT &apos;0&apos; COMMENT &apos;被回复的用户ID&apos;,</div><div class="line">`comment` varchar(100) COLLATE utf8_unicode_ci DEFAULT &apos;&apos; COMMENT &apos;评价&apos;,</div><div class="line">`voice_url` varchar(100) COLLATE utf8_unicode_ci DEFAULT &apos;&apos; COMMENT &apos;语音介绍&apos;,</div><div class="line">`voice_time` smallint(5) DEFAULT &apos;0&apos; COMMENT &apos;语音时长&apos;,</div><div class="line">`created_at` datetime DEFAULT NULL,</div><div class="line">`updated_at` datetime DEFAULT NULL,</div><div class="line">`deleted_at` datetime DEFAULT NULL,</div><div class="line">PRIMARY KEY (`id`)</div><div class="line">) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;</div></pre></td></tr></table></figure>
-<h1 id="PHP代码片段"><a href="#PHP代码片段" class="headerlink" title="PHP代码片段"></a>PHP代码片段</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">public <span class="keyword">function</span> XXX&#123;</div><div class="line">  <span class="variable">$comment</span> = <span class="variable">$this</span>-&gt;getCommentList();</div><div class="line">  <span class="built_in">return</span> <span class="variable">$comment</span>;</div><div class="line">&#125;</div><div class="line">private <span class="keyword">function</span> getCommentList(<span class="variable">$parent_id</span> = 0,&amp;<span class="variable">$result</span> = array())&#123;</div><div class="line">  //查询数据条件，此处用的Laravel框架</div><div class="line">  <span class="variable">$data</span> = Follow::<span class="built_in">where</span>(<span class="string">'parent_id'</span>,<span class="variable">$parent_id</span>)-&gt;orderBy(<span class="string">'created_at'</span>)-&gt;get();</div><div class="line">  //此处可以对获得的数据进行处理得到想要的数据jie</div><div class="line">  foreach(<span class="variable">$data</span> as <span class="variable">$k</span>)&#123;</div><div class="line">    <span class="variable">$thisData</span> = &amp;<span class="variable">$ret</span>[];</div><div class="line">    <span class="variable">$k</span>[<span class="string">'children'</span>] = <span class="variable">$this</span>-&gt;getCommentList(<span class="variable">$k</span>[<span class="string">'id'</span>],<span class="variable">$thisData</span>);</div><div class="line">    <span class="variable">$thisData</span> = <span class="variable">$k</span>;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<blockquote>
-<p>返回数据</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">data:[<span class="string">"id"</span>: 7,</div><div class="line">      <span class="string">"topic_id"</span>: 1,</div><div class="line">      <span class="string">"parent_id"</span>: 0,</div><div class="line">      <span class="string">"parent_user_id"</span>: 000,</div><div class="line">      <span class="string">"comment"</span>: <span class="string">""</span>,</div><div class="line">      <span class="string">"created_at"</span>: <span class="string">"2016-03-21 13:36:08"</span>,</div><div class="line">      <span class="string">"updated_at"</span>: <span class="string">"2016-09-13 16:02:08"</span>,</div><div class="line">      <span class="string">"children"</span>: [</div><div class="line">        &#123;</div><div class="line">          <span class="string">"id"</span>: 2,</div><div class="line">          <span class="string">"topic_id"</span>: 1,</div><div class="line">          <span class="string">"parent_id"</span>: 7,</div><div class="line">          <span class="string">"parent_user_id"</span>: 001,</div><div class="line">          <span class="string">"comment"</span>: <span class="string">""</span>,</div><div class="line">          <span class="string">"created_at"</span>: <span class="string">"2016-03-21 17:34:18"</span>,</div><div class="line">          <span class="string">"updated_at"</span>: <span class="string">"2016-09-13 15:58:49"</span>,</div><div class="line">          <span class="string">"children"</span>: [</div><div class="line">            &#123;</div><div class="line">              <span class="string">"id"</span>: 3,</div><div class="line">              <span class="string">"topic_id"</span>: 2,</div><div class="line">              <span class="string">"parent_id"</span>: 8,</div><div class="line">              <span class="string">"parent_user_id"</span>: 007,</div><div class="line">              <span class="string">"comment"</span>: <span class="string">""</span>,</div><div class="line">              <span class="string">"created_at"</span>: <span class="string">"2016-03-21 18:38:27"</span>,</div><div class="line">              <span class="string">"updated_at"</span>: <span class="string">"2016-09-13 15:58:48"</span>,</div><div class="line">              <span class="string">"children"</span>: null</div><div class="line">            &#125;</div><div class="line">          ]</div><div class="line">        &#125;</div><div class="line">      ]</div><div class="line">    &#125;,...</div><div class="line">    ]</div></pre></td></tr></table></figure>
-<h1 id="关于页面"><a href="#关于页面" class="headerlink" title="关于页面"></a>关于页面</h1><p><img src="http://img3.imgtn.bdimg.com/it/u=1441677433,4104167358&amp;fm=21&amp;gp=0.jpg" alt="Coming soon"></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-  </section>
-
-  
+  </div>
 
 
           </div>
@@ -781,6 +400,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/11/15/sort/"
+           data-title="排序" data-url="http://huac0921.github.io/2016/11/15/sort/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -800,8 +427,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://p1.bqimg.com/4851/5b51df3127e2ddd8.jpg"
@@ -844,6 +480,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#冒泡排序"><span class="nav-number">1.</span> <span class="nav-text">冒泡排序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#选择排序"><span class="nav-number">2.</span> <span class="nav-text">选择排序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#快速排序"><span class="nav-number">3.</span> <span class="nav-text">快速排序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#插入排序"><span class="nav-number">4.</span> <span class="nav-text">插入排序</span></a></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -947,6 +594,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
