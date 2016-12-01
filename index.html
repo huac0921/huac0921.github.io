@@ -240,6 +240,161 @@
             
               
                 
+                <a class="post-title-link" href="/2016/11/23/运维/" itemprop="url">
+                  从零开始配置阿里云ECS
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-23T16:53:05+08:00" content="2016-11-23">
+              2016-11-23
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/11/23/运维/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/23/运维/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="从零开始配置阿里云ECS"><a href="#从零开始配置阿里云ECS" class="headerlink" title="从零开始配置阿里云ECS"></a>从零开始配置阿里云ECS</h1><h2 id="装完centos7-0-64位系统后的状态"><a href="#装完centos7-0-64位系统后的状态" class="headerlink" title="装完centos7.0 64位系统后的状态"></a>装完centos7.0 64位系统后的状态</h2><ol>
+<li>默认操作系统情况</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[root@iZ25gxj8d82Z etc]# uname -a</div><div class="line">Linux iZ25gxj8d82Z 3.10.0-123.9.3.el7.x86_64 #1 SMP Thu Nov 6 15:06:03 UTC 2014 x86_64 x86_64 x86_64 GNU/Linux</div></pre></td></tr></table></figure>
+<ol>
+<li>开启的对外端口情况</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[root@iZ25gxj8d82Z ~]# ss -ntlp</div><div class="line">State      Recv-Q Send-Q                                                                                       Local Address:Port                                                                                         Peer Address:Port</div><div class="line">LISTEN     0      128                                                                                                      *:22                                                                                                      *:*      users:((&quot;sshd&quot;,895,3))</div></pre></td></tr></table></figure>
+<p>只开放了22端口。</p>
+<ol>
+<li>检查默认开机启动应用</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">[root@iZ25gxj8d82Z ~]# systemctl list-unit-files |grep enable</div><div class="line">crond.service                          enabled</div><div class="line">cups.service                           enabled</div><div class="line">dmraid-activation.service              enabled</div><div class="line">getty@.service                         enabled</div><div class="line">lvm2-monitor.service                   enabled</div><div class="line">microcode.service                      enabled</div><div class="line">nscd.service                           enabled</div><div class="line">ntpd.service                           enabled</div><div class="line">rsyslog.service                        enabled</div><div class="line">sshd.service                           enabled</div><div class="line">sysstat.service                        enabled</div><div class="line">systemd-readahead-collect.service      enabled</div><div class="line">systemd-readahead-drop.service         enabled</div><div class="line">systemd-readahead-replay.service       enabled</div><div class="line">cups.socket                            enabled</div><div class="line">dm-event.socket                        enabled</div><div class="line">lvm2-lvmetad.socket                    enabled</div><div class="line">nscd.socket                            enabled</div><div class="line">default.target                         enabled</div><div class="line">multi-user.target                      enabled</div></pre></td></tr></table></figure>
+<ol>
+<li>默认用户情况</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">[root@iZ25gxj8d82Z ~]# cat /etc/passwd</div><div class="line">root:x:0:0:root:/root:/bin/bash</div><div class="line">bin:x:1:1:bin:/bin:/sbin/nologin</div><div class="line">daemon:x:2:2:daemon:/sbin:/sbin/nologin</div><div class="line">adm:x:3:4:adm:/var/adm:/sbin/nologin</div><div class="line">lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin</div><div class="line">sync:x:5:0:sync:/sbin:/bin/sync</div><div class="line">shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown</div><div class="line">halt:x:7:0:halt:/sbin:/sbin/halt</div><div class="line">mail:x:8:12:mail:/var/spool/mail:/sbin/nologin</div><div class="line">operator:x:11:0:operator:/root:/sbin/nologin</div><div class="line">games:x:12:100:games:/usr/games:/sbin/nologin</div><div class="line">ftp:x:14:50:FTP User:/var/ftp:/sbin/nologin</div><div class="line">nobody:x:99:99:Nobody:/:/sbin/nologin</div><div class="line">dbus:x:81:81:System message bus:/:/sbin/nologin</div><div class="line">polkitd:x:999:998:User for polkitd:/:/sbin/nologin</div><div class="line">avahi:x:70:70:Avahi mDNS/DNS-SD Stack:/var/run/avahi-daemon:/sbin/nologin</div><div class="line">avahi-autoipd:x:170:170:Avahi IPv4LL Stack:/var/lib/avahi-autoipd:/sbin/nologin</div><div class="line">libstoragemgmt:x:998:997:daemon account for libstoragemgmt:/var/run/lsm:/sbin/nologin</div><div class="line">ntp:x:38:38::/etc/ntp:/sbin/nologin</div><div class="line">abrt:x:173:173::/etc/abrt:/sbin/nologin</div><div class="line">postfix:x:89:89::/var/spool/postfix:/sbin/nologin</div><div class="line">sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/sbin/nologin</div><div class="line">chrony:x:997:996::/var/lib/chrony:/sbin/nologin</div><div class="line">nscd:x:28:28:NSCD Daemon:/:/sbin/nologin</div><div class="line">tcpdump:x:72:72::/:/sbin/nologin</div></pre></td></tr></table></figure>
+<p>以下都可以通过 saltstack 这个工具来实现：</p>
+<h2 id="更新系统"><a href="#更新系统" class="headerlink" title="更新系统"></a>更新系统</h2><p>查看目前有哪些源：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum repolist all</div></pre></td></tr></table></figure>
+<p>替换官方centos源为阿里云源镜像。</p>
+<ul>
+<li>备份：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup</div></pre></td></tr></table></figure>
+<ul>
+<li>下载新的 CentOS-Base.repo 到 /etc/yum.repos.d/ （此处使用阿里云源站内网域名，不占用公网流量）</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyuncs.com/repo/Centos-7.repo</div></pre></td></tr></table></figure>
+<ul>
+<li>之后运行以下命令，生成缓存</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum makecache</div></pre></td></tr></table></figure>
+<ul>
+<li>更新系统软件：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum update</div></pre></td></tr></table></figure>
+<h2 id="打开防火墙，并设置开机自启动"><a href="#打开防火墙，并设置开机自启动" class="headerlink" title="打开防火墙，并设置开机自启动"></a>打开防火墙，并设置开机自启动</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">systemctl enable firewalld.service</div><div class="line">systemctl start firewalld.service</div></pre></td></tr></table></figure>
+<h2 id="安装-zsh-oh-my-zsh"><a href="#安装-zsh-oh-my-zsh" class="headerlink" title="安装 zsh , oh-my-zsh"></a>安装 zsh , oh-my-zsh</h2><ul>
+<li>安装 zsh，配置 zsh 为root用户默认shell。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">yum install zsh</div><div class="line">which zsh (/usr/bin/zsh)</div><div class="line">vim /etc/shells 在文件末尾增加一行 /usr/bin/zsh</div><div class="line">chsh -s SHELL</div></pre></td></tr></table></figure>
+<ul>
+<li>安装 oh-my-zsh</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sh -c &quot;$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)&quot;</div></pre></td></tr></table></figure>
+<ul>
+<li>安装 autojump:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install autojump-zsh</div></pre></td></tr></table></figure>
+<ul>
+<li>配置 .zshrc ：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">plugins=(git history autojump)</div></pre></td></tr></table></figure>
+<h2 id="确认git，svn安装情况"><a href="#确认git，svn安装情况" class="headerlink" title="确认git，svn安装情况"></a>确认git，svn安装情况</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git --version</div><div class="line">svn --version</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/11/15/sort/" itemprop="url">
                   排序
                 </a>
@@ -812,7 +967,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-count">6</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
