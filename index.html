@@ -240,6 +240,116 @@
             
               
                 
+                <a class="post-title-link" href="/2016/12/02/laravel-redis/" itemprop="url">
+                  Laravel_Redis与Predis的冲突问题
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-02T17:19:43+08:00" content="2016-12-02">
+              2016-12-02
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/12/02/laravel-redis/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/02/laravel-redis/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h1><p>最近闲来无事，想重温一下Redis源码，一直在框架中使用Redis，还没在原生PHP中了解这神奇的缓存。<br>搜索了下PHP版本，准备用HomeBrew安装个Predis。<br><img src="http://i1.piimg.com/1949/3a44653c9cf9a48e.png" alt="Markdown"><br>安装成功，new了Redis，PHP与Redis完美连接。。。。<br>没想到。。。。</p>
+<blockquote>
+<p>噩梦的开始</p>
+</blockquote>
+<p>今天使用API调试接口的时候。。。<br><img src="http://i1.piimg.com/1949/4e7e9b897afc8ca2.png" alt="Markdown"><br>Redis::connection()报错，说方法未定义。</p>
+<h1 id="查找问题"><a href="#查找问题" class="headerlink" title="查找问题"></a>查找问题</h1><p>打开配置文件查找，在config下app.php<br>‘Redis’=&gt; Illuminate\Support\Facades\Redis::class,<br>这不是没变动吗？<br>点击use Redis，直接跳转到IDE下php的Redis.php，这。。。。<br>难道是predis挖的坑，去brew uninstall PHP56-predis<br>发现，还是报错。。。</p>
+<blockquote>
+<p>PHP Warning:  PHP Startup: Unable to load dynamic library ‘/usr/local/opt/php56-redis/redis.so’ - dlopen(/usr/local/opt/php56-redis/redis.so, 9): image not found in Unknown on line 0<br>问题有眉目了，配置文件的坑。<br>在我卸载了php的redis扩展之后，该文件夹不存在了</p>
+<h1 id="解决问题"><a href="#解决问题" class="headerlink" title="解决问题"></a>解决问题</h1></blockquote>
+<p>重新安装一遍Redis扩展<br>找到制定目录，配置文件在/usr/local/etc/php/conf.d/ext-redis下<br>注释掉<br><img src="http://i1.piimg.com/1949/f4f3e7ce8bc6428b.png" alt="Markdown"><br>终于可以愉快的使用Laravel框架里的Redis了。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/11/23/运维/" itemprop="url">
                   从零开始配置阿里云ECS
                 </a>
@@ -967,7 +1077,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-count">7</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

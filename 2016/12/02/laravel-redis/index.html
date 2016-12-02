@@ -84,13 +84,35 @@
 
 
 
+<meta name="description" content="起因最近闲来无事，想重温一下Redis源码，一直在框架中使用Redis，还没在原生PHP中了解这神奇的缓存。搜索了下PHP版本，准备用HomeBrew安装个Predis。安装成功，new了Redis，PHP与Redis完美连接。。。。没想到。。。。
+
+噩梦的开始
+
+今天使用API调试接口的时候。。。Redis::connection()报错，说方法未定义。
+查找问题打开配置文件查找，在config">
 <meta property="og:type" content="article">
-<meta property="og:title" content="redis_with_cache">
-<meta property="og:url" content="http://huac0921.github.io/2016/11/15/redis-with-cache/index.html">
+<meta property="og:title" content="Laravel_Redis与Predis的冲突问题">
+<meta property="og:url" content="http://huac0921.github.io/2016/12/02/laravel-redis/index.html">
 <meta property="og:site_name" content="应许之地">
-<meta property="og:updated_time" content="2016-11-15T01:58:06.000Z">
+<meta property="og:description" content="起因最近闲来无事，想重温一下Redis源码，一直在框架中使用Redis，还没在原生PHP中了解这神奇的缓存。搜索了下PHP版本，准备用HomeBrew安装个Predis。安装成功，new了Redis，PHP与Redis完美连接。。。。没想到。。。。
+
+噩梦的开始
+
+今天使用API调试接口的时候。。。Redis::connection()报错，说方法未定义。
+查找问题打开配置文件查找，在config">
+<meta property="og:image" content="http://i1.piimg.com/1949/3a44653c9cf9a48e.png">
+<meta property="og:image" content="http://i1.piimg.com/1949/4e7e9b897afc8ca2.png">
+<meta property="og:image" content="http://i1.piimg.com/1949/f4f3e7ce8bc6428b.png">
+<meta property="og:updated_time" content="2016-12-02T10:54:42.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="redis_with_cache">
+<meta name="twitter:title" content="Laravel_Redis与Predis的冲突问题">
+<meta name="twitter:description" content="起因最近闲来无事，想重温一下Redis源码，一直在框架中使用Redis，还没在原生PHP中了解这神奇的缓存。搜索了下PHP版本，准备用HomeBrew安装个Predis。安装成功，new了Redis，PHP与Redis完美连接。。。。没想到。。。。
+
+噩梦的开始
+
+今天使用API调试接口的时候。。。Redis::connection()报错，说方法未定义。
+查找问题打开配置文件查找，在config">
+<meta name="twitter:image" content="http://i1.piimg.com/1949/3a44653c9cf9a48e.png">
 
 
 
@@ -108,7 +130,7 @@
   };
 </script>
 
-  <title> redis_with_cache | 应许之地 </title>
+  <title> Laravel_Redis与Predis的冲突问题 | 应许之地 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -238,7 +260,7 @@
             
             
               
-                redis_with_cache
+                Laravel_Redis与Predis的冲突问题
               
             
           </h1>
@@ -250,8 +272,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-15T09:58:06+08:00" content="2016-11-15">
-              2016-11-15
+            <time itemprop="dateCreated" datetime="2016-12-02T17:19:43+08:00" content="2016-12-02">
+              2016-12-02
             </time>
           </span>
 
@@ -261,8 +283,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/11/15/redis-with-cache/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/15/redis-with-cache/" itemprop="commentsCount"></span>
+                <a href="/2016/12/02/laravel-redis/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/02/laravel-redis/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -285,7 +307,17 @@
       
 
       
-        
+        <h1 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h1><p>最近闲来无事，想重温一下Redis源码，一直在框架中使用Redis，还没在原生PHP中了解这神奇的缓存。<br>搜索了下PHP版本，准备用HomeBrew安装个Predis。<br><img src="http://i1.piimg.com/1949/3a44653c9cf9a48e.png" alt="Markdown"><br>安装成功，new了Redis，PHP与Redis完美连接。。。。<br>没想到。。。。</p>
+<blockquote>
+<p>噩梦的开始</p>
+</blockquote>
+<p>今天使用API调试接口的时候。。。<br><img src="http://i1.piimg.com/1949/4e7e9b897afc8ca2.png" alt="Markdown"><br>Redis::connection()报错，说方法未定义。</p>
+<h1 id="查找问题"><a href="#查找问题" class="headerlink" title="查找问题"></a>查找问题</h1><p>打开配置文件查找，在config下app.php<br>‘Redis’=&gt; Illuminate\Support\Facades\Redis::class,<br>这不是没变动吗？<br>点击use Redis，直接跳转到IDE下php的Redis.php，这。。。。<br>难道是predis挖的坑，去brew uninstall PHP56-predis<br>发现，还是报错。。。</p>
+<blockquote>
+<p>PHP Warning:  PHP Startup: Unable to load dynamic library ‘/usr/local/opt/php56-redis/redis.so’ - dlopen(/usr/local/opt/php56-redis/redis.so, 9): image not found in Unknown on line 0<br>问题有眉目了，配置文件的坑。<br>在我卸载了php的redis扩展之后，该文件夹不存在了</p>
+<h1 id="解决问题"><a href="#解决问题" class="headerlink" title="解决问题"></a>解决问题</h1></blockquote>
+<p>重新安装一遍Redis扩展<br>找到制定目录，配置文件在/usr/local/etc/php/conf.d/ext-redis下<br>注释掉<br><img src="http://i1.piimg.com/1949/f4f3e7ce8bc6428b.png" alt="Markdown"><br>终于可以愉快的使用Laravel框架里的Redis了。</p>
+
       
     </div>
 
@@ -309,17 +341,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/11/14/aboutNext/" rel="next" title="GitHub升级后next主题不能正常显示的坑">
-                <i class="fa fa-chevron-left"></i> GitHub升级后next主题不能正常显示的坑
+              <a href="/2016/11/23/运维/" rel="next" title="从零开始配置阿里云ECS">
+                <i class="fa fa-chevron-left"></i> 从零开始配置阿里云ECS
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/11/15/sort/" rel="prev" title="排序">
-                排序 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -368,8 +396,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/11/15/redis-with-cache/"
-           data-title="redis_with_cache" data-url="http://huac0921.github.io/2016/11/15/redis-with-cache/">
+      <div class="ds-thread" data-thread-key="2016/12/02/laravel-redis/"
+           data-title="Laravel_Redis与Predis的冲突问题" data-url="http://huac0921.github.io/2016/12/02/laravel-redis/">
       </div>
     
   </div>
@@ -453,7 +481,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#起因"><span class="nav-number">1.</span> <span class="nav-text">起因</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查找问题"><span class="nav-number">2.</span> <span class="nav-text">查找问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解决问题"><span class="nav-number">3.</span> <span class="nav-text">解决问题</span></a></li></ol></div>
             
           </div>
         </section>
